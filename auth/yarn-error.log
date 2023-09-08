@@ -1,0 +1,77 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /Users/skn1942/opt/anaconda3/bin:/Users/skn1942/opt/anaconda3/condabin:/Users/skn1942/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/opt/homebrew/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  18.16.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: connect ENETUNREACH 74.91.29.203:443 - Local (0.0.0.0:54344)
+      at internalConnect (node:net:1066:16)
+      at defaultTriggerAsyncIdScope (node:internal/async_hooks:464:18)
+      at emitLookup (node:net:1323:9)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:107658:28
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:107567:13
+      at module.exports.RawTask.call (/usr/local/lib/node_modules/yarn/lib/cli.js:83655:19)
+      at flush (/usr/local/lib/node_modules/yarn/lib/cli.js:83737:29)
+      at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+npm manifest: 
+  {
+    "name": "auth",
+    "version": "1.0.0",
+    "description": "auth service",
+    "main": "index.js",
+    "scripts": {
+      "start": "ts-node-dev --poll src/index.ts",
+      "test": "jest --watchAll --no-cache",
+      "test:ci": "jest"
+    },
+    "jest": {
+      "preset": "ts-jest",
+      "testEnvironment": "node",
+      "setupFilesAfterEnv": [
+        "./src/test/setup.ts"
+      ]
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@sobhankiani/e-shop-common": "^1.0.9",
+      "@types/cookie-session": "^2.0.39",
+      "@types/express": "^4.17.3",
+      "@types/jsonwebtoken": "^8.3.8",
+      "@types/mongoose": "^5.7.8",
+      "cookie-session": "^1.4.0",
+      "express": "^4.17.1",
+      "express-async-errors": "^3.1.1",
+      "express-validator": "^6.4.0",
+      "jsonwebtoken": "^8.5.1",
+      "mongoose": "^5.9.7",
+      "ts-node-dev": "^1.0.0-pre.44",
+      "typescript": "^3.8.3"
+    },
+    "devDependencies": {
+      "@types/jest": "^25.2.1",
+      "@types/supertest": "^2.0.8",
+      "jest": "^25.2.7",
+      "mongodb-memory-server": "^6.5.1",
+      "supertest": "^4.0.2",
+      "ts-jest": "^25.3.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
