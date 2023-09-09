@@ -1,3 +1,4 @@
 export enum Subjects {
-  TEST="TEST"
+  TEST = "TEST",
+  UserCheckoutAccepted = 'UserCheckoutAccepted'
 }
