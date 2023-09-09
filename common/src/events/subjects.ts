@@ -1,5 +1,6 @@
 export enum Subjects {
   TEST = "TEST",
   UserCheckoutAccepted = 'UserCheckoutAccepted',
-  OrderStarted = "OrderStarted"
+  OrderStarted = "OrderStarted",
+  ProdcutPriceChanged = "ProductPriceChanged"
 }
