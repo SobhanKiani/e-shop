@@ -11,7 +11,7 @@ export interface UserCheckoutAcceptedEvent {
         country: string;
         zipCode: string;
         cardNumber: string;
-        cardHolderNumber: string;
+        cardHolderName: string;
         cardExpiration: Date;
         cardSecurityNumber: string;
         cartTypeId: number;
