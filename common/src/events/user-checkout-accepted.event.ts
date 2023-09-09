@@ -17,5 +17,6 @@ export interface UserCheckoutAcceptedEvent {
         cardTypeId: number;
         buyer: string;
         basket: string;
+        requestId: string;
     }
 }
