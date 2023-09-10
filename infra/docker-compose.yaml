@@ -9,7 +9,7 @@ services:
     ports:
       - 9000:9000
     expose:
-      - 9000    
+      - 9000
     environment:
       - MONGO_URI=mongodb://auth-mongodb:27017/auth
       - MONGO_PORT=27017
@@ -19,16 +19,49 @@ services:
       - ./../auth:/app
 
   auth-mongodb:
-      image: mongo:latest
-      ports:
-        - 27017:27017
-      # environment:
-      #   MONGO_INITDB_ROOT_USERNAME: root
-      #   MONGO_INITDB_ROOT_PASSWORD: testPassword1234
-      volumes:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: testPassword1234
+    volumes:
       - auth-data:/data/db/
+
+  basket:
+    build:
+      context: ./../basket
+      dockerfile: Dockerfile
+    image: skn1942/eshop-basket
+    ports:
+      - 9001:9001
+    expose:
+      - 9001
+    environment:
+      - MONGO_URI=mongodb://basket-mongodb:27017/basket
+      - MONGO_PORT=27017
+      - MONGO_DB_NAME=basket
+      - JWT_KEY=ThisIsATestJWTKey
+      - NATS_URL=nats://nats-server:4222
+      - NATS_CLUSTER_ID=-eshop
+      - NATS_CLIENT_ID=basket_nats_id
+    volumes:
+      - ./../basket:/app
+    depends_on:
+      - nats-server
+
+  basket-mongodb:
+    image: mongo:latest
+    ports:
+      - 27018:27017
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: testPassword1234
+    volumes:
+      - basket-data:/data/db/
+
   prometheus:
-    build: 
+    build:
       dockerfile: prometheus.dockerfile
       context: ./../monitoring/prometheus
     container_name: prometheus
@@ -41,7 +74,7 @@ services:
       - ./../monitoring/prometheus/prometheus.env
 
   grafana:
-    build: 
+    build:
       dockerfile: grafana.dockerfile
       context: ./../monitoring/grafana
     container_name: grafana
@@ -57,6 +90,36 @@ services:
       - ./../monitoring/grafana/config.monitoring
       - ./../monitoring/grafana/grafana.env
 
+  nats-server:
+    image: nats-streaming:latest
+    ports:
+      - 4222:4222
+      - 6222:6222
+      - 8222:8222
+    expose:
+      - 4222
+      - 8222
+      - 6222
+    # environment:
+    #   - NATS_ARGS=-p 4222 -m 8222 -hbi 5s -hbt 5s -hbf 2 -SD -cid -my_cluster
 
+    command:
+      [
+        "-p",
+        "4222",
+        "-m",
+        "8222",
+        "-hbi",
+        "5s",
+        "-hbt",
+        "5s",
+        "-hbf",
+        "2",
+        "-SD",
+        "-cid",
+        # "--cluster_id eshop",
+        "-eshop",
+      ]
 volumes:
   auth-data:
+  basket-data:
