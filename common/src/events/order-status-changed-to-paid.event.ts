@@ -1,6 +1,6 @@
 import { Subjects } from "./subjects"
 
-export interface OrderStockChangedToPaidEvent {
+export interface OrderStatusChangedToPaidEvent {
     subject: Subjects.OrderStatusChangedToPaid;
     data: {
         orderId: string,
