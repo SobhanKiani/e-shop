@@ -18,3 +18,7 @@ export * from './events/subjects';
 export * from './events/user-checkout-accepted.event';
 export * from './events/order-started.event';
 export * from './events/product-price-changed.event';
+export * from './events/order-status-changed-to-awaiting-validation.event';
+export * from './events/order-status-changed-to-paid.event';
+export * from './events/order-stock-confirmed.event';
+export * from './events/order-stock-rejected.event';

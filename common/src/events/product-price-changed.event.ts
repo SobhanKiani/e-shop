@@ -1,7 +1,7 @@
 import { Subjects } from "./subjects";
 
 export interface ProductPriceChangedEvent {
-    subject: Subjects.ProdcutPriceChanged
+    subject: Subjects.ProdcutPriceChanged;
     data: {
         productId: string;
         newPrice: number;

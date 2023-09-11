@@ -18,5 +18,6 @@ export interface UserCheckoutAcceptedEvent {
         buyer: string;
         basket: string;
         requestId: string;
+        version: number;
     }
 }
