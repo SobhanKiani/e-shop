@@ -6,5 +6,6 @@ export interface ProductPriceChangedEvent {
         productId: string;
         newPrice: number;
         oldPrice: number;
+        version:number;
     }
 }
