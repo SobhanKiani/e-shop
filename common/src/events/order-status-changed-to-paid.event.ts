@@ -3,11 +3,12 @@ import { Subjects } from "./subjects"
 export interface OrderStatusChangedToPaidEvent {
     subject: Subjects.OrderStatusChangedToPaid;
     data: {
-        orderId: string,
+        orderId: string;
         version: number;
         orderStockItems: {
-            productId: string,
-            units: number,
+            productId: string;
+            units: number;
+            version: number;
         }[];
     }
 }
