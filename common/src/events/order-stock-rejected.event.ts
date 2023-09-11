@@ -1,6 +1,6 @@
 import { Subjects } from "./subjects";
 
-export interface OrderStockRejected {
+export interface OrderStockRejectedEvent {
     subject: Subjects.OrderStockRejected;
     data: {
         productId: string;
