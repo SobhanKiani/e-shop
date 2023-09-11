@@ -7,9 +7,9 @@ export class ProductPriceChangedListenter extends Listener<ProductPriceChangedEv
     subject: Subjects.ProdcutPriceChanged = Subjects.ProdcutPriceChanged;
     queueGroupName: string = queueGroupName;
 
-    async onMessage(data: { productId: string; newPrice: number; oldPrice: number; }, msg: Message) {
-        const { productId, oldPrice, newPrice } = data
-        const basketsList = await CustomerBasket.find().populate('basketItems');
+    async onMessage(data: ProductPriceChangedEvent['data'], msg: Message) {
+        const { productId, oldPrice, newPrice, version } = data
+        const basketsList = await CustomerBasket.find({ version: version - 1 }).populate('basketItems');
 
         for (let basket of basketsList) {
             const itemsToUpdate = basket.basketItems.filter((item) => { item.id == productId })
