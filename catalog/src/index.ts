@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import { app } from './app';
 import { natsWrapper } from './nats-wrapper';
 import { randomBytes } from 'crypto'
+import { OrderStatusChangedToAwaitingValidationListener } from './events/listeners/OrederStatusChangedToAwaitingValidation';
+import { OrderStatusChangedToPaidListener } from './events/listeners/OrderStatusChangedToPaidListener';
 
 const start = async () => {
   console.log('Starting up........');
@@ -41,6 +43,9 @@ const start = async () => {
 
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
+
+    new OrderStatusChangedToAwaitingValidationListener(natsWrapper.client).listen();
+    new OrderStatusChangedToPaidListener(natsWrapper.client).listen();
 
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
