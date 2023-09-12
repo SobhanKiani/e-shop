@@ -22,3 +22,7 @@ export * from './events/order-status-changed-to-awaiting-validation.event';
 export * from './events/order-status-changed-to-paid.event';
 export * from './events/order-stock-confirmed.event';
 export * from './events/order-stock-rejected.event';
+export * from './events/order-payment-failed.event';
+export * from './events/order-payment-succeeded.event';
+export * from './events/order-status-changed-to-stock-confirmed.event';
+
