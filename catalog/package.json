@@ -1,7 +1,7 @@
 {
   "name": "catalog",
   "version": "1.0.0",
-  "description": "basket service",
+  "description": "catalog service",
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --poll src/index.ts",
