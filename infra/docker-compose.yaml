@@ -151,7 +151,21 @@ services:
         # "--cluster_id eshop",
         "-eshop",
       ]
+
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5432:80"
+      - "5341:5341"
+    volumes:
+      - seq-logs:/data
+
 volumes:
   auth-data:
   basket-data:
   catalog-data:
+  seq-logs:
