@@ -56,8 +56,8 @@ const start = async () => {
     console.error(err);
   }
 
-  app.listen(9000, () => {
-    console.log('Auth Listening on port 9000!!!!!!!!');
+  app.listen(9003, () => {
+    console.log('Payment Listening on port 9003!!!!!!!!');
   });
 };
 

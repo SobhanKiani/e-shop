@@ -39,7 +39,7 @@ services:
       - 9001
     environment:
       - MONGO_URI=mongodb://basket-mongodb:27017/basket
-      - MONGO_PORT=27018
+      - MONGO_PORT=27017
       - MONGO_DB_NAME=basket
       - JWT_KEY=ThisIsATestJWTKey
       - NATS_URL=nats://nats-server:4222
@@ -64,14 +64,14 @@ services:
     build:
       context: ./../catalog
       dockerfile: Dockerfile
-    image: skn1942/eshop-bcatalogasket
+    image: skn1942/eshop-catalog
     ports:
       - 9002:9002
     expose:
       - 9002
     environment:
       - MONGO_URI=mongodb://catalog-mongodb:27017/catalog
-      - MONGO_PORT=27019
+      - MONGO_PORT=27017
       - MONGO_DB_NAME=catalog
       - JWT_KEY=ThisIsATestJWTKey
       - NATS_URL=nats://nats-server:4222
@@ -85,12 +85,45 @@ services:
   catalog-mongodb:
     image: mongo:latest
     ports:
-      - 27019:27017
+      - 27017:27017
     # environment:
     #   MONGO_INITDB_ROOT_USERNAME: root
     #   MONGO_INITDB_ROOT_PASSWORD: testPassword1234
     volumes:
       - catalog-data:/data/db/
+
+  payment:
+    build:
+      context: ./../payment
+      dockerfile: Dockerfile
+    image: skn1942/eshop-payment
+    ports:
+      - 9003:9003
+    expose:
+      - 9003
+    environment:
+      - MONGO_URI=mongodb://payment-mongodb:27017/payment
+      - MONGO_PORT=27017
+      - MONGO_DB_NAME=payment
+      - JWT_KEY=ThisIsATestJWTKey
+      - NATS_URL=nats://nats-server:4222
+      - NATS_CLUSTER_ID=-eshop
+      - NATS_CLIENT_ID=payment_nats_id
+      - PAYMENT_SUCCEEDED=true
+    volumes:
+      - ./../payment:/app
+    depends_on:
+      - nats-server
+
+  payment-mongodb:
+    image: mongo:latest
+    ports:
+      - 27019:27017
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: testPassword1234
+    volumes:
+      - payment-data:/data/db/
 
   prometheus:
     build:
@@ -168,4 +201,5 @@ volumes:
   auth-data:
   basket-data:
   catalog-data:
+  payment-data:
   seq-logs:
