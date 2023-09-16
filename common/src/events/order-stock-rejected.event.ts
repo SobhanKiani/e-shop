@@ -3,8 +3,12 @@ import { Subjects } from "./subjects";
 export interface OrderStockRejectedEvent {
     subject: Subjects.OrderStockRejected;
     data: {
-        productId: string;
-        hasStock: boolean;
-        version: number;
-    }[]
+        orderStockItems: {
+            productId: string;
+            hasStock: boolean;
+            version: number;
+        }[],
+        orderId: string;
+        version: number;c
+    }
 }
