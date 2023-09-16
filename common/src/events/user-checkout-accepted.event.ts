@@ -16,7 +16,17 @@ export interface UserCheckoutAcceptedEvent {
         cardSecurityNumber: string;
         cardTypeId: number;
         buyer: string;
-        basket: string;
+        basket: {
+            buyerId: string;
+            orderItems: {
+                productName: string;
+                productId: string;
+                units: number;
+                unitPrice: number;
+                discount: number;
+            }[]
+            version: number
+        };
         requestId: string;
         version: number;
     }
