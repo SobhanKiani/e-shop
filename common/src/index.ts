@@ -26,3 +26,11 @@ export * from './events/order-payment-failed.event';
 export * from './events/order-payment-succeeded.event';
 export * from './events/order-status-changed-to-stock-confirmed.event';
 
+export * from './events/order-domain-events/order-domaine-event-subjects'
+export * from './events/order-domain-events/buyer-payment-method-verified-domain-event'
+export * from './events/order-domain-events/order-cancelled-domain-event'
+export * from './events/order-domain-events/order-shipped-domain-event'
+export * from './events/order-domain-events/order-started-domain-event'
+export * from './events/order-domain-events/order-status-changed-to-awaiting-validation-domain-event'
+export * from './events/order-domain-events/order-status-changed-to-paid-domain-event'
+export * from './events/order-domain-events/order-status-changed-to-stock-confirmed-domain-event'

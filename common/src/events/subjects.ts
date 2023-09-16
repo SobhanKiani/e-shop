@@ -9,5 +9,5 @@ export enum Subjects {
   OrderStatusChangedToPaid = "OrderStatusChangedToPaid",
   OrderStatusChangedToStockConfirmed = "OrderStatusChangedToStockConfirmed",
   OrderPaymentFailed = "OrderPaymentFailed",
-  OrderPaymentSucceeded = "OrderPaymentSucceeded"
+  OrderPaymentSucceeded = "OrderPaymentSucceeded",
 }
