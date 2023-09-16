@@ -10,4 +10,6 @@ export enum Subjects {
   OrderStatusChangedToStockConfirmed = "OrderStatusChangedToStockConfirmed",
   OrderPaymentFailed = "OrderPaymentFailed",
   OrderPaymentSucceeded = "OrderPaymentSucceeded",
+  OrderStatusChangedToShipped = "OrderStatusChangedToShipped",
+  OrderStatusChangedToCancelled = "OrderStatusChangedToCancelled",
 }
