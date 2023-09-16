@@ -9,6 +9,6 @@ export interface OrderStockRejectedEvent {
             version: number;
         }[],
         orderId: string;
-        version: number;c
+        version: number;
     }
 }
