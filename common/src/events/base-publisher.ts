@@ -1,8 +1,9 @@
 import { Stan } from 'node-nats-streaming';
 import { Subjects } from './subjects';
+import { OrderDomainEventSubjects } from './order-domain-events/order-domaine-event-subjects';
 
 interface Event {
-  subject: Subjects;
+  subject: Subjects | OrderDomainEventSubjects;
   data: any;
 }
 
