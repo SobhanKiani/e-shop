@@ -5,5 +5,7 @@ export interface OrderStatusChangedToStockConfirmedEvent {
     data: {
         orderId: string;
         version: number;
+        orderStatus: string;
+        buyerName: string;
     }
 }
