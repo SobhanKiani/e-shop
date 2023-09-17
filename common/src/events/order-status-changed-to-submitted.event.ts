@@ -1,10 +1,10 @@
 import { Subjects } from "./subjects";
 
-export interface OrderStatusChangedToSubmiitedEvent {
-    subject:Subjects.OrderStatusChangedToSubmiited;
-    data:{
-        orderId:string;
-        orderStatus:string;
-        buyerName:string;
+export interface OrderStatusChangedToSubmittedEvent {
+    subject: Subjects.OrderStatusChangedToSubmitted;
+    data: {
+        orderId: string;
+        orderStatus: string;
+        buyerName: string;
     }
 }
