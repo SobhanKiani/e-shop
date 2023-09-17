@@ -5,6 +5,7 @@ export interface OrderStatusChangedToPaidEvent {
     data: {
         orderId: string;
         version: number;
+        buyerName: string;
         orderStockItems: {
             productId: string;
             units: number;
