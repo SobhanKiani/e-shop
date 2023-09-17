@@ -14,7 +14,7 @@ export interface UserCheckoutAcceptedEvent {
         cardHolderName: string;
         cardExpiration: Date;
         cardSecurityNumber: string;
-        cardTypeId: number;
+        cardTypeId: string;
         buyer: string;
         basket: {
             buyerId: string;
