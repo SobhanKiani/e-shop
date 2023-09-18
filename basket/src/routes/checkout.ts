@@ -51,6 +51,16 @@ router.post('/api/basket/checkout',
         });
         await basketCheckout.save();
 
+        const basketOrderItems = basket.basketItems.map((bi) => {
+            return {
+                productName: bi.productName,
+                productId: bi.id,
+                units: bi.quantity,
+                unitPrice: bi.unitPrice,
+                discount: bi.unitPrice - bi.oldUnitPrice,
+            }
+        })
+
         new UserCheckoutAcceptedPublisher(natsWrapper.client).publish({
             userId,
             userName,
@@ -64,9 +74,14 @@ router.post('/api/basket/checkout',
             cardExpiration,
             cardSecurityNumber,
             cardTypeId,
-            basket: basket.id,
+            basket: {
+                buyerId: basket.buyerId,
+                version: basket.version,
+                orderItems: basketOrderItems
+            },
             buyer: userId,
-            requestId
+            requestId,
+            version: basketCheckout.version
         })
 
         res.status(200).send({ "result": "Checkout Accpeted" })

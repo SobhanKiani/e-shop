@@ -1,0 +1,1 @@
+export const queueGroupNameDomainEvents = 'order-service-domain-event'

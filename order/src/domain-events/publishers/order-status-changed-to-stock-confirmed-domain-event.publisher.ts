@@ -1,0 +1,5 @@
+import { OrderDomainEventSubjects, OrderStatusChangedToStockConfirmedDomainEvent, Publisher } from "@sobhankiani/e-shop-common";
+
+export class OrderStatusChangedToStockConfirmedDomainEventPublisher extends Publisher<OrderStatusChangedToStockConfirmedDomainEvent>{
+    subject: OrderDomainEventSubjects.OrderStatusChangedToStockConfirmedDomainEvent = OrderDomainEventSubjects.OrderStatusChangedToStockConfirmedDomainEvent;
+}

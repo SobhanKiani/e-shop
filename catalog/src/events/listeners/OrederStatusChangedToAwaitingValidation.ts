@@ -27,7 +27,7 @@ export class OrderStatusChangedToAwaitingValidationListener extends Listener<Ord
         if (confirmed) {
             new OrderStockConfirmedPublisher(natsWrapper.client).publish({ orderId, version });
         } else {
-            new OrderStockRejectedPublisher(natsWrapper.client).publish(confirmedOrderStockItems)
+            new OrderStockRejectedPublisher(natsWrapper.client).publish({ orderStockItems: confirmedOrderStockItems, orderId: orderId, version: version })
         }
 
         msg.ack();
